@@ -1,3 +1,6 @@
+from colorama import Fore
+
+
 class LifeAttributes:
     def __init__(self, health, max_health, shield, max_shield, stamina, max_stamina, mana, max_mana):
         self.health = health
@@ -40,7 +43,11 @@ class LifeAttributes:
 
     ### Stamina ###
     def use_stamina(self, amount):
-        self.stamina -= amount
+        if self.stamina >= amount:
+            self.stamina -= amount
+            print(Fore.BLUE + f"Stamina used: {amount}" + Fore.RESET)
+        else:
+            print("Not enough stamina!")
 
     def restore_stamina(self, amount):
         self.stamina += amount
