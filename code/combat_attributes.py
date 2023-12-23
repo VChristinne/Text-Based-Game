@@ -1,9 +1,5 @@
-import life_attributes as life
-
-
-class CombatAttributes(life):
-    def __init__(self, health, max_health, shield, max_shield, stamina, max_stamina, mana, max_mana, damage, defense):
-        super().__init__(self, health, max_health, shield, max_shield, stamina, max_stamina, mana, max_mana)
+class CombatAttributes():
+    def __init__(self, damage, defense):
         self.damage = damage
         self.defense = defense
 
