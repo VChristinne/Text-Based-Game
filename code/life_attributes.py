@@ -43,12 +43,10 @@ class LifeAttributes:
         return self.max_shield
 
     ### Stamina ###
-    def use_stamina(self):
-        stamina_cost = combat_attributes.CombatAttributes().stamina_cost()
-
-        if stamina_cost > 0:
-            self.stamina -= stamina_cost
-            print(Fore.BLUE + "Stamina used" + Fore.RESET)
+    def use_stamina(self, amount):
+        if self.stamina > 0:
+            self.stamina -= amount
+            print(Fore.BLUE + f"{amount} stamina used" + Fore.RESET)
         else:
             print("Not enough stamina!")
 

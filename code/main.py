@@ -13,16 +13,19 @@ def main():
     print(Fore.RED + "\n### ENEMY ###")
     status(enemy)
 
-    ### Test Life Attributes ###
+    test_life_attributes(player, enemy)
+
+
+def test_life_attributes(player, enemy):
     rounds = 0
     while enemy.get_health() > 0:
         rounds += 1
         print(Style.BRIGHT + Fore.CYAN + f"\n\n***ROUND {rounds}***" + Style.RESET_ALL)
 
         ### Test Combat ###
-        player_attack = combat.CombatAttributes(random.randint(10, 50))
+        player_attack = combat.CombatAttributes(50)
         player_attack.attack(enemy)
-        player.use_stamina()
+        player.use_stamina(player_attack.stamina_cost())
 
         print(Fore.BLUE + f"Player damage: {player_attack.get_damage()}" + Fore.RESET)
         print(Fore.RED + f"Enemy health: {enemy.get_health()}" + Fore.RESET)
