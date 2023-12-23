@@ -1,4 +1,4 @@
-class Attributes:
+class LifeAttributes:
     def __init__(self, health, max_health, shield, max_shield, stamina, max_stamina, mana, max_mana):
         self.health = health
         self.max_health = max_health
