@@ -1,8 +1,8 @@
-import attributes
+import life_attributes as life
 
 
 def main():
-    atb01 = attributes.Attributes(100, 100, 100, 100, 100, 100, 100, 100)
+    atb01 = life.LifeAttributes(100, 100, 100, 100, 100, 100, 100, 100)
     status(atb01)
 
 
