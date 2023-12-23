@@ -1,4 +1,4 @@
-class CombatAttributes():
+class CombatAttributes:
     def __init__(self, damage, defense):
         self.damage = damage
         self.defense = defense
