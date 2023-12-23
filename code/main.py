@@ -23,7 +23,7 @@ def test_life_attributes(player, enemy):
         print(Style.BRIGHT + Fore.CYAN + f"\n\n***ROUND {rounds}***" + Style.RESET_ALL)
 
         ### Test Combat ###
-        player_attack = combat.CombatAttributes(50)
+        player_attack = combat.CombatAttributes(random.randrange(10, 60, 5))
         player_attack.attack(enemy)
         player.use_stamina(player_attack.stamina_cost())
 
@@ -36,8 +36,9 @@ def test_life_attributes(player, enemy):
             print(Style.BRIGHT + Fore.BLUE + "\nPlayer is exhausted!\n" + Style.RESET_ALL)
             break
 
-    if enemy.get_health() <= 0:
-        print(Style.BRIGHT + Fore.GREEN + "\nEnemy defeated!\n" + Style.RESET_ALL)
+        if enemy.is_dead():
+            print(Style.BRIGHT + Fore.GREEN + "\nEnemy defeated!\n" + Style.RESET_ALL)
+            break
 
 
 def status(atb):
