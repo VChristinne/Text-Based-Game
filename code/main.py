@@ -16,7 +16,7 @@ def main():
     rounds = 0
     while enemy.get_health() > 0:
         rounds += 1
-        print(Fore.BLACK + f"\n\n***ROUND {rounds}***" + Fore.RESET)
+        print(Style.BRIGHT + Fore.CYAN + f"\n\n***ROUND {rounds}***" + Style.RESET_ALL)
 
         ### Test Combat ###
         player_attack = combat.CombatAttributes(50)
