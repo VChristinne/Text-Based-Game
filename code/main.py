@@ -1,14 +1,15 @@
+import random
 from colorama import Fore, Style
 import life_attributes as life
 import combat_attributes as combat
 
 
 def main():
-    player = life.LifeAttributes(100, 100, 100, 100, 100, 100, 100, 100)
+    player = life.LifeAttributes()
     print(Fore.BLUE + "\n### PLAYER ###")
     status(player)
 
-    enemy = life.LifeAttributes(100, 100, 100, 100, 100, 100, 100, 100)
+    enemy = life.LifeAttributes()
     print(Fore.RED + "\n### ENEMY ###")
     status(enemy)
 
@@ -19,16 +20,21 @@ def main():
         print(Style.BRIGHT + Fore.CYAN + f"\n\n***ROUND {rounds}***" + Style.RESET_ALL)
 
         ### Test Combat ###
-        player_attack = combat.CombatAttributes(50)
-
+        player_attack = combat.CombatAttributes(random.randint(10, 50))
         player_attack.attack(enemy)
-        player.use_stamina(20)
+        player.use_stamina()
 
+        print(Fore.BLUE + f"Player damage: {player_attack.get_damage()}" + Fore.RESET)
         print(Fore.RED + f"Enemy health: {enemy.get_health()}" + Fore.RESET)
         print(Fore.RED + f"Enemy shield: {enemy.get_shield()}" + Fore.RESET)
         print(Fore.BLUE + f"Player stamina: {player.get_stamina()}" + Fore.RESET)
 
-    print(Style.BRIGHT + Fore.GREEN + "\nEnemy defeated!\n" + Style.RESET_ALL)
+        if player.is_exhausted():
+            print(Style.BRIGHT + Fore.BLUE + "\nPlayer is exhausted!\n" + Style.RESET_ALL)
+            break
+
+    if enemy.get_health() <= 0:
+        print(Style.BRIGHT + Fore.GREEN + "\nEnemy defeated!\n" + Style.RESET_ALL)
 
 
 def status(atb):
