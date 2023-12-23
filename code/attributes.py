@@ -25,8 +25,8 @@ class Attributes:
     def get_health(self):
         return self.health
 
-    def max_health(self):
-        return self.health
+    def get_max_health(self):
+        return self.max_health
 
     ### Shield ###
     def restore_shield(self, amount):
@@ -35,8 +35,8 @@ class Attributes:
     def get_shield(self):
         return self.shield
 
-    def max_shield(self):
-        return self.shield
+    def get_max_shield(self):
+        return self.max_shield
 
     ### Stamina ###
     def use_stamina(self, amount):
@@ -48,8 +48,8 @@ class Attributes:
     def get_stamina(self):
         return self.stamina
 
-    def max_stamina(self):
-        return self.stamina
+    def get_max_stamina(self):
+        return self.max_stamina
 
     ### Mana ###
     def use_mana(self, amount):
@@ -61,8 +61,8 @@ class Attributes:
     def get_mana(self):
         return self.mana
 
-    def max_mana(self):
-        return self.mana
+    def get_max_mana(self):
+        return self.max_mana
 
     ### Status ###
     def is_alive(self):
