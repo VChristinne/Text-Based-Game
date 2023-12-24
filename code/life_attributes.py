@@ -46,7 +46,7 @@ class LifeAttributes:
     def use_stamina(self, amount):
         if self.stamina > 0:
             self.stamina -= amount
-            print(Fore.BLUE + f"{amount} stamina used" + Fore.RESET)
+            print(Fore.WHITE + f"| {amount} stamina used       |" + Fore.RESET)
         else:
             print("Not enough stamina!")
 

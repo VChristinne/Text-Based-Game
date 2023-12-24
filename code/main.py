@@ -44,16 +44,16 @@ def basic_combat(player, enemy, player_damage_value):
     rounds = 0
     while not player.is_exhausted() and not enemy.is_dead() and rounds < 20:
         rounds += 1
-        print(Style.BRIGHT + Fore.CYAN + f"\n\n***ROUND {rounds}***" + Style.RESET_ALL)
+        print(Style.BRIGHT + Fore.CYAN + f"\n\n|       ROUND {rounds}        |" + Style.RESET_ALL)
 
         player_attack = combat.CombatAttributes(player_damage_value)
         player_attack.attack(enemy)
         player.use_stamina(player_attack.stamina_cost())
 
-        print(Fore.BLUE + f"Player damage: {player_attack.get_damage()}" + Fore.RESET)
-        print(Fore.RED + f"Enemy health: {enemy.get_health()}" + Fore.RESET)
-        print(Fore.RED + f"Enemy shield: {enemy.get_shield()}" + Fore.RESET)
-        print(Fore.BLUE + f"Player stamina: {player.get_stamina()}" + Fore.RESET)
+        print(Fore.BLUE + f"| Player damage: {player_attack.get_damage()}    |" + Fore.RESET)
+        print(Fore.RED + f"| Enemy health: {enemy.get_health()}    |" + Fore.RESET)
+        print(Fore.RED + f"| Enemy shield: {enemy.get_shield()}     |" + Fore.RESET)
+        print(Fore.BLUE + f"| Player stamina: {player.get_stamina()}   | " + Fore.RESET)
 
         if player.is_exhausted():
             print(Style.BRIGHT + Fore.BLUE + "\nPlayer is exhausted!\n" + Style.RESET_ALL)
