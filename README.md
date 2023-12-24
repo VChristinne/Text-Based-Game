@@ -8,7 +8,7 @@
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 ![Static Badge](https://badgen.net/badge/python/v3.11+?color=cyan)
-![Static Badge](https://badgen.net/badge/IDE/CLion?color=green)
+![Static Badge](https://badgen.net/badge/IDE/PyCharm?color=green)
 [![License](https://badgen.net/badge/license/MIT?color=black)](https://opensource.org/license/mit/)
 
 ## Features
