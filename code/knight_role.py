@@ -1,4 +1,4 @@
-from code.life_attributes import LifeAttributes
+from life_attributes import LifeAttributes
 
 
 class Knight(LifeAttributes):
