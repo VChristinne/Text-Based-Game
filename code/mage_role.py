@@ -1,7 +1,7 @@
-import life_attributes as life
+from life_attributes import LifeAttributes
 
 
-class Mage(life.LifeAttributes):
+class Mage(LifeAttributes):
     """
     1. Soulbind: binds the soul of an enemy.
     2. Dante's Inferno: deals massive fire damage to all enemies.

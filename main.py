@@ -1,7 +1,6 @@
 import random
 from colorama import Fore, Style
-import life_attributes as life
-import combat_attributes as combat
+from code import combat_attributes as combat, life_attributes as life
 
 
 def main():

@@ -1,7 +1,7 @@
-import life_attributes as life
+from life_attributes import LifeAttributes
 
 
-class Knight(life.LifeAttributes):
+class Knight(LifeAttributes):
     """
     1. Charge: charges towards an enemy, dealing damage.
     2. Riposte: defensive with counter attack.
