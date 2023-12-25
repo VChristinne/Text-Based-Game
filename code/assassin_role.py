@@ -11,6 +11,4 @@ class Assassin(LifeAttributes):
     def __init__(self, health=70, max_health=70, shield=0, max_shield=0, stamina=60, max_stamina=60, mana=0, max_mana=0):
         super().__init__(health, max_health, shield, max_shield, stamina, max_stamina, mana, max_mana)
         self.abilities = ["Mutilate", "Assassinate", "Rapid Concealment", "Death's Embrace"]
-        self.ability_damage = [30, 100, 0, 20]
-        self.ability_stamina_cost = [20, 40, 10, 30]
         self.current_ability = None
