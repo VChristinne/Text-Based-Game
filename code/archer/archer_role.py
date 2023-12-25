@@ -1,4 +1,4 @@
-from life_attributes import LifeAttributes
+from code.life_attributes import LifeAttributes
 
 
 class Archer(LifeAttributes):
