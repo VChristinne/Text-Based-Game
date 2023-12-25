@@ -13,4 +13,5 @@ class Mage(LifeAttributes):
         self.abilities = ["Soulbind", "Dante's Inferno", "Quantum Surge", "Void Shatter"]
         self.ability_damage = [0, 50, 20, 100]
         self.ability_stamina_cost = [30, 40, 10, 70]
+        self.ability_mana_cost = [0, 0, 20, 0]
         self.current_ability = None
