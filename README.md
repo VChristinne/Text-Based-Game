@@ -13,4 +13,14 @@
 
 ## Features
 
+## Class Skills
+| Role     | Skill 1       | Skill 2      | Skill 3           | Skill 4          |
+|----------|---------------|--------------|-------------------|------------------|
+| Knight   | Charge        | Riposte      | Tactical Retreat  | Berserker Rage   |
+| Mage     | Soul bind     | Dante's Hell | Quantum Surge     | Void Shatter     |
+| Assassin | Mutilate      | Assassinate  | Rapid Concealment | Death's Embrace  |
+| Archer   | Piercing Shot | Arcane Arrow | Arrow of Silence  | Solar Flare Shot |
+
+
+
 ## Screenshots
