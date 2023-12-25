@@ -14,12 +14,12 @@
 ## Features
 
 ## Class Skills
-| Role     | Skill 1       | Skill 2      | Skill 3           | Skill 4          |
-|----------|---------------|--------------|-------------------|------------------|
-| Knight   | Charge        | Riposte      | Tactical Retreat  | Berserker Rage   |
-| Mage     | Soul bind     | Dante's Hell | Quantum Surge     | Void Shatter     |
-| Assassin | Mutilate      | Assassinate  | Rapid Concealment | Death's Embrace  |
-| Archer   | Piercing Shot | Arcane Arrow | Arrow of Silence  | Solar Flare Shot |
+| Role     | Skill 1                             | Skill 2                        | Skill 3                                    | Skill 4                                    |
+|----------|-------------------------------------|--------------------------------|--------------------------------------------|--------------------------------------------|
+| Knight   | Charge of the Valiant               | Riposte Shieldwall             | Tactical Retreat of the Enclave            | Berserker's Fury Unleashed                 |
+| Mage     | Soulbind with the Astral Chains     | Dante’s Inferno                | Quantum Surge of Chaotic Essence           | Void Shatter of Cosmic Annihilation        |
+| Assassin | Mutilate Dance of Shadows           | Assassinate's Veil             | Rapid Concealment of the Phantom           | Death’s Embrace Eternal Night              |
+| Archer   | Piercing Shot of Ethereal Precision | Arcane Arrow of Astral Mastery | Arrow of Silence from the Whispering Grove | Solar Flare Arrow from the Celestial Forge |
 
 
 
