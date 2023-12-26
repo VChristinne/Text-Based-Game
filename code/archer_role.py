@@ -1,5 +1,5 @@
 from life_attributes import LifeAttributes
-from archer_skill import ArcherSkill
+from skill_roles import ArcherSkill
 
 
 class Archer(LifeAttributes):
