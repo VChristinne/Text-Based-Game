@@ -1,4 +1,8 @@
 from colorama import Fore
+from archer_role import Archer
+from knight_role import Knight
+from mage_role import Mage
+from assassin_role import Assassin
 
 
 class Player:
@@ -8,12 +12,12 @@ class Player:
 
     def choose_role(self, available_roles):
         while True:
-            print("Escolha uma role: ")
+            print("\nEscolha uma classe: ")
             for i, role in enumerate(available_roles):
                 print(f"{i + 1}. {role}")
 
             try:
-                choice = int(input("Digite o número da role desejada: ")) - 1
+                choice = int(input("Digite o número da classe desejada: ")) - 1
 
                 if 0 <= choice < len(available_roles):
                     self.role = available_roles[choice]
@@ -37,13 +41,18 @@ class Player:
             print(Fore.RED + "Entrada inválida. Digite um username." + Fore.RESET)
 
     def get_skills(self):
-        if self.role == 1:
-            ArcherSkill.name()
-        elif self.role == 2:
-            return Knight.abilities()
-        elif self.role == 3:
-            return Mage.abilities()
-        elif self.role == 4:
-            return Assassin.abilities()
+        role_instance = None
+
+        if self.role == "Archer":
+            role_instance = Archer()
+        elif self.role == "Knight":
+            role_instance = Knight()
+        elif self.role == "Mage":
+            role_instance = Mage()
+        elif self.role == "Assassin":
+            role_instance = Assassin()
+
+        if role_instance:
+            return [f"-> {skill.name}: \n{skill.description}\n" for skill in role_instance.abilities]
         else:
             return None
