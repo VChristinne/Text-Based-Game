@@ -19,13 +19,6 @@ class Assassin(LifeAttributes):
                           0,
                           0,
                           False),
-            AssassinSkill("Assassinate's Veil",
-                          "Envolve a lâmina em uma aura nefasta antes de desferir um golpe letal certeiro. A lâmina, envolta na própria escuridão, corta através da resistência, eliminando instantaneamente inimigos desprotegidos.",
-                          0,
-                          0,
-                          0,
-                          0,
-                          False),
             AssassinSkill("Rapid Concealment of the Phantom",
                           "Desaparece nas sombras instantaneamente, tornando-se uma sombra fugaz que escapa da visão inimiga. O retorno repentino confunde os inimigos, permitindo ao Assassino desviar dos ataques.",
                           0,
@@ -39,6 +32,13 @@ class Assassin(LifeAttributes):
                           0,
                           0,
                           0,
+                          False),
+            AssassinSkill("Assassinate's Veil",
+                          "Envolve a lâmina em uma aura nefasta antes de desferir um golpe letal certeiro. A lâmina, envolta na própria escuridão, corta através da resistência, eliminando instantaneamente inimigos desprotegidos com 25 de vida.",
+                          30,
+                          30,
+                          100,
+                          100,
                           False)
         ]
         self.current_ability = None

@@ -33,8 +33,8 @@ class Mage(LifeAttributes):
             MageSkill("Void Shatter of Cosmic Annihilation",
                       "Manipula a energia do vazio para criar uma explosão desintegradora. Este poder cósmico aniquila instantaneamente inimigos sem escudo com 25 de vida, desencadeando uma onda de energia cósmica devastadora.",
                       0,
-                      0,
-                      0,
+                      40,
+                      100,
                       False)
         ]
         self.current_ability = None
