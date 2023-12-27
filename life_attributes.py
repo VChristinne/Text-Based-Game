@@ -3,14 +3,14 @@ from colorama import Fore
 
 class LifeAttributes:
     def __init__(self, health=100, max_health=100, shield=100, max_shield=100, stamina=100, max_stamina=100, mana=100, max_mana=100):
-        self.health = health
-        self.max_health = max_health
-        self.shield = shield
-        self.max_shield = max_shield
-        self.stamina = stamina
-        self.max_stamina = max_stamina
-        self.mana = mana
-        self.max_mana = max_mana
+        self.health: int = health
+        self.max_health: int = max_health
+        self.shield: int = shield
+        self.max_shield: int = max_shield
+        self.stamina: int = stamina
+        self.max_stamina: int = max_stamina
+        self.mana: int = mana
+        self.max_mana: int = max_mana
 
     ### Health ###
     def take_damage(self, damage):
