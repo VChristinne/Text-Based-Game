@@ -1,6 +1,9 @@
+from colorama import Fore
+
+
 class Player:
-    def __init__(self, username):
-        self.username = username
+    def __init__(self):
+        self.username = None
         self.role = None
 
     def choose_role(self, available_roles):
@@ -20,8 +23,27 @@ class Player:
             except ValueError:
                 print("Entrada inválida. Digite um número.")
 
-    def get_username(self):
-        return self.username
-
     def get_role(self):
         return self.role
+
+    def get_username(self):
+        try:
+            self.username = str(input("Digite seu username: "))
+            while len(self.username) < 3:
+                print(Fore.RED + "Username deve conter pelo menos 3 caracteres." + Fore.RESET)
+                self.username = str(input("Digite seu username: "))
+            return self.username
+        except ValueError:
+            print(Fore.RED + "Entrada inválida. Digite um username." + Fore.RESET)
+
+    def get_skills(self):
+        if self.role == 1:
+            ArcherSkill.name()
+        elif self.role == 2:
+            return Knight.abilities()
+        elif self.role == 3:
+            return Mage.abilities()
+        elif self.role == 4:
+            return Assassin.abilities()
+        else:
+            return None
