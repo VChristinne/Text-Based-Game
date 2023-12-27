@@ -9,7 +9,7 @@ class Mage(LifeAttributes):
     3. Quantum Surge: deals variable quantum damage to an enemy.
     4. Void Shatter: instantly kills an enemy without shield with 25 health.
     """
-    def __init__(self, health=60, max_health=60, shield=0, max_shield=0, stamina=0, max_stamina=0, mana=80, max_mana=80):
+    def __init__(self, health=100, max_health=100, shield=100, max_shield=100, stamina=0, max_stamina=0, mana=100, max_mana=100):
         super().__init__(health, max_health, shield, max_shield, stamina, max_stamina, mana, max_mana)
         self.abilities = [
             MageSkill("Soulbind with the Astral Chains",

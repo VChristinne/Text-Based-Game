@@ -9,7 +9,7 @@ class Assassin(LifeAttributes):
     3. Rapid Concealment: dodge an enemy quick attack.
     4. Death's Embrace: increases drastically damage, but loses health.
     """
-    def __init__(self, health=70, max_health=70, shield=0, max_shield=0, stamina=60, max_stamina=60, mana=0, max_mana=0):
+    def __init__(self, health=100, max_health=100, shield=100, max_shield=100, stamina=100, max_stamina=100, mana=0, max_mana=0):
         super().__init__(health, max_health, shield, max_shield, stamina, max_stamina, mana, max_mana)
         self.abilities = [
             AssassinSkill("Mutilate Dance of Shadows",
