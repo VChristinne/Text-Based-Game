@@ -2,7 +2,6 @@ from colorama import Fore, Style
 from life_attributes import LifeAttributes
 from player import Player
 
-
 player_in_game = Player()
 player_status = LifeAttributes()
 enemy_status = LifeAttributes()
@@ -41,10 +40,6 @@ def waves():
                 print("Escolha inválida. Tente novamente.")
         except IndexError:
             print("Entrada inválida. Digite um número.")
-
-        print(Fore.RED + f"\nEnemy health: {enemy_status.get_health()}" + Fore.RESET)
-        print(Fore.RED + f"Enemy shield: {enemy_status.get_shield()}" + Fore.RESET)
-        print(Fore.BLUE + f"Player stamina: {player_status.get_stamina()}" + Fore.RESET)
 
     print(Style.BRIGHT + Fore.GREEN + "\nEnemy defeated!\n" + Style.RESET_ALL)
 
