@@ -9,6 +9,7 @@ class Player:
     def __init__(self):
         self.username = None
         self.role = None
+        self.current_skill = None
 
     def choose_role(self, available_roles):
         while True:
@@ -16,6 +17,7 @@ class Player:
             for i, role in enumerate(available_roles):
                 print(f"{i + 1}. {role}")
 
+            # TODO: implements choice confirmation
             try:
                 choice = int(input("Digite o número da classe desejada: ")) - 1
 
@@ -23,9 +25,9 @@ class Player:
                     self.role = available_roles[choice]
                     break
                 else:
-                    print("Escolha inválida. Tente novamente.")
+                    print(Fore.RED + "Escolha inválida. Tente novamente." + Fore.RESET)
             except ValueError:
-                print("Entrada inválida. Digite um número.")
+                print(Fore.RED + "Entrada inválida. Digite um número." + Fore.RESET)
 
     def get_role(self):
         return self.role
@@ -43,16 +45,34 @@ class Player:
     def get_skills(self):
         role_instance = None
 
-        if self.role == "Archer":
-            role_instance = Archer()
-        elif self.role == "Knight":
-            role_instance = Knight()
-        elif self.role == "Mage":
-            role_instance = Mage()
-        elif self.role == "Assassin":
-            role_instance = Assassin()
+        match self.role:
+            case "Archer":
+                role_instance = Archer()
+            case "Knight":
+                role_instance = Knight()
+            case "Mage":
+                role_instance = Mage()
+            case "Assassin":
+                role_instance = Assassin()
+            case _:
+                print(Fore.RED + "Classe não reconhecida. Saindo do jogo." + Fore.RESET)
 
         if role_instance:
-            return [f"-> {skill.name}: \n{skill.description}\n" for skill in role_instance.abilities]
+            formatted_skills = []
+            for skill in role_instance.abilities:
+                formatted_skill = f"\n-> {skill.name}\n{skill.description}"
+
+                if hasattr(skill, 'stamina_cost') and skill.stamina_cost:
+                    formatted_skill += f"\n- Custo de estamina: {skill.stamina_cost}"
+                if hasattr(skill, 'mana_cost') and skill.mana_cost:
+                    formatted_skill += f"\n- Custo de mana: {skill.mana_cost}"
+                if hasattr(skill, 'damage') and skill.damage:
+                    formatted_skill += f"\n- Dano: {skill.damage}"
+                if hasattr(skill, 'critic') and skill.critic:
+                    formatted_skill += f"\n- Crítico: {skill.critic}"
+
+                formatted_skills.append(formatted_skill)
+
+            return formatted_skills
         else:
             return None
