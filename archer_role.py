@@ -14,9 +14,9 @@ class Archer(LifeAttributes):
         self.abilities = [
             ArcherSkill("Piercing Shot of Ethereal Precision",
                         "Dispara uma flecha etérea que transcende as leis da física, perfurando armaduras e ignorando as defesas físicas do inimigo.",
-                        50,
+                        20,
                         10,
-                        0,
+                        30,
                         0),
             ArcherSkill("Arcane Arrow of Astral Mastery",
                         "Imbui uma flecha com a essência da magia arcana, tornando-a um projétil místico que causa não apenas dano físico, mas também dano mágico adicional.",
