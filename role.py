@@ -1,18 +1,11 @@
 class Role:
-    def __init__(self, name, skills, health, mana, stamina):
+    def __init__(self, name, skills, health, stamina, mana, shield):
         self.name = name
         self.skills = skills
         self.health = max(0, health)
-        self.mana = max(0, mana)
         self.stamina = max(0, stamina)
-
-    def add_skill(self, skill):
-        if skill not in self.skills:
-            self.skills.append(skill)
-
-    def remove_skill(self, skill):
-        if skill in self.skills:
-            self.skills.remove(skill)
+        self.mana = max(0, mana)
+        self.shield = max(0, shield)
 
     def has_skill(self, skill):
         return skill in self.skills

@@ -11,3 +11,6 @@ class Player:
 
     def get_stamina(self):
         return self.role.stamina
+
+    def get_shield(self):
+        return self.role.shield
