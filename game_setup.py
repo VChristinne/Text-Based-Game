@@ -105,11 +105,11 @@ quantum_surge = Skill("Quantum Surge of Chaotic Essence",
                       15)
 
 void_shatter = Skill("Void Shatter of Cosmic Annihilation",
-                     "Manipula a energia do vazio para criar uma explosão desintegradora. Este poder cósmico aniquila instantaneamente inimigos sem escudo com 25 de vida, desencadeando uma onda de energia cósmica devastadora.",
+                     "Manipula a energia do vazio para criar uma explosão desintegradora, aniquilando instantaneamente inimigos sem escudo, desencadeando uma onda de energia cósmica devastadora.",
                      50,
                      20,
                      0,
-                     30)
+                     50)
 
 mage_skills = [soulbind, dantes_inferno, quantum_surge, void_shatter]
 
