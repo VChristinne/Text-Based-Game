@@ -142,11 +142,11 @@ deaths_embrace = Skill("Death’s Embrace Eternal Night",
                        0)
 
 assassinate = Skill("Assassinate's Veil",
-                        "Envolve a lâmina em uma aura nefasta antes de desferir um golpe letal certeiro. A lâmina, envolta na própria escuridão, corta através da resistência, eliminando instantaneamente inimigos desprotegidos",
-                        50,
-                        0,
-                        40,
-                        0)
+                    "Envolve a lâmina em uma aura nefasta antes de desferir um golpe letal certeiro. A lâmina, envolta na própria escuridão, corta através da resistência, eliminando instantaneamente inimigos desprotegidos",
+                    50,
+                    0,
+                    40,
+                    0)
 
 assassin_skills = [mutalate, rapid_concealment, deaths_embrace, assassinate]
 
