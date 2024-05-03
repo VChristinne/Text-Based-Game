@@ -24,3 +24,7 @@
 
 
 ## Screenshots
+
+### Menu v1.0
+
+<img width="1560" alt="Menu" src="https://github.com/VChristinne/Text-Based-Game/assets/141720673/efb9a33c-9538-4f2d-b60b-6043e6f8d7ec">
