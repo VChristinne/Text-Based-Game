@@ -22,12 +22,12 @@ def skill_info(role_name, skill_index):
 
     if skill:
         print(Fore.RED + Style.BRIGHT + f"\nSkill {skill_index}:" + Fore.RESET)
-        print(f"{skill.name}")
-        print(f"{skill.description}")
-        print(f"Damage: {skill.damage}")
-        print(f"Health Cost: {skill.health_cost}")
-        print(f"Stamina Cost: {skill.stamina_cost}")
-        print(f"Mana Cost: {skill.mana_cost}")
+        print(f"{skill.name}\n"
+              f"{skill.description}\n"
+              f"Damage: {skill.damage}\n"
+              f"Health Cost: {skill.health_cost}\n"
+              f"Stamina Cost: {skill.stamina_cost}\n"
+              f"Mana Cost: {skill.mana_cost}")
         print(Style.RESET_ALL)
     else:
         print("Invalid skill index.")
