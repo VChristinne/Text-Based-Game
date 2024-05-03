@@ -74,6 +74,7 @@ solar_flare = Skill("Solar Flare Arrow from the Celestial Forge",
                     25,
                     0)
 
+archer_skills = [piercing_shot, arcane_arrow, arrow_of_silence, solar_flare]
 
 """
 MAGE SKILLS
@@ -110,6 +111,7 @@ void_shatter = Skill("Void Shatter of Cosmic Annihilation",
                      0,
                      30)
 
+mage_skills = [soulbind, dantes_inferno, quantum_surge, void_shatter]
 
 """
 ASSASSIN SKILLS
@@ -133,11 +135,20 @@ rapid_concealment = Skill("Rapid Concealment of the Silent Blade",
                           0)
 
 deaths_embrace = Skill("Death’s Embrace Eternal Night",
-                          "Aceita a morte como uma aliada temporária, mergulhando em uma escuridão profunda. Durante esse abraço mortal, cada golpe desferido pelo Assassino é imbuido com o poder da própria morte, infligindo dano significativo. No entanto, esse pacto sombrio cobra um preço, consumindo a própria vida do Assassino.",
-                          50,
-                          0,
-                          30,
-                          0)
+                       "Aceita a morte como uma aliada temporária, mergulhando em uma escuridão profunda. Durante esse abraço mortal, cada golpe desferido pelo Assassino é imbuido com o poder da própria morte, infligindo dano significativo. No entanto, esse pacto sombrio cobra um preço, consumindo a própria vida do Assassino.",
+                       50,
+                       0,
+                       30,
+                       0)
+
+assassinate = Skill("Assassinate's Veil",
+                        "Envolve a lâmina em uma aura nefasta antes de desferir um golpe letal certeiro. A lâmina, envolta na própria escuridão, corta através da resistência, eliminando instantaneamente inimigos desprotegidos",
+                        50,
+                        0,
+                        40,
+                        0)
+
+assassin_skills = [mutalate, rapid_concealment, deaths_embrace, assassinate]
 
 roles = {
     "Knight": Role("Knight", knight_skills, 20, 40, 0, 100),
