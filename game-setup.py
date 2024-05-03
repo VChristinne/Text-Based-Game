@@ -68,16 +68,85 @@ arrow_of_silence = Skill("Arrow of Silence from the Whispering Grove",
                          0)
 
 solar_flare = Skill("Solar Flare Arrow from the Celestial Forge",
-                         "Cria uma flecha carregada com a energia ardente do sol, que, ao atingir o alvo, irradia uma explosão de chamas solares, causando dano de fogo e cegando o inimigo por dois turnos.",
-                         40,
-                         0,
-                         25,
-                         0)
+                    "Cria uma flecha carregada com a energia ardente do sol, que, ao atingir o alvo, irradia uma explosão de chamas solares, causando dano de fogo e cegando o inimigo por dois turnos.",
+                    40,
+                    0,
+                    25,
+                    0)
+
+
+"""
+MAGE SKILLS
+1. Soulbind: binds the soul of an enemy.
+2. Dante's Inferno: deals massive fire damage to all enemies.
+3. Quantum Surge: deals variable quantum damage to an enemy.
+4. Void Shatter: instantly kills an enemy without shield with 25 health.
+"""
+soulbind = Skill("Soulbind with the Astral Chains",
+                 "Tece correntes astrais entre o mago e o inimigo, vinculando suas vidas por dois turnos. Durante esse tempo, o dano infligido ao inimigo é refletido no mago como uma forma de vínculo espiritual.",
+                 30,
+                 15,
+                 15,
+                 0)
+
+dantes_inferno = Skill("Dante's Inferno of the Burning Abyss",
+                       "Invoca as chamas do próprio inferno, causando uma explosão de fogo que consome tudo em seu caminho. O dano massivo é compensado pelo fato de que o mago também sofre um preço pela manipulação do fogo infernal.",
+                       35,
+                       10,
+                       0,
+                       20)
+
+quantum_surge = Skill("Quantum Surge of Chaotic Essence",
+                      "Libera uma explosão de partículas quânticas imprevisíveis, criando uma cascata de caos. O dano variável torna esta habilidade uma manifestação imprevisível da essência caótica.",
+                      25,
+                      0,
+                      0,
+                      15)
+
+void_shatter = Skill("Void Shatter of Cosmic Annihilation",
+                     "Manipula a energia do vazio para criar uma explosão desintegradora. Este poder cósmico aniquila instantaneamente inimigos sem escudo com 25 de vida, desencadeando uma onda de energia cósmica devastadora.",
+                     50,
+                     20,
+                     0,
+                     30)
+
+
+"""
+ASSASSIN SKILLS
+1. Mutilate: deals critic damage to an enemy.
+2. Rapid Concealment: dodge an enemy quick attack.
+3. Death's Embrace: increases drastically damage, but loses health.
+4. Assassinate: instantly kills an enemy without shield with 25 health.
+"""
+mutalate = Skill("Mutilate Dance of Shadows",
+                 "Dança habilmente entre as sombras, desferindo uma série rápida de ataques precisos. Cada golpe é um elo na dança mortal, culminando em um ataque crítico que deixa os inimigos desorientados.",
+                 40,
+                 0,
+                 15,
+                 0)
+
+rapid_concealment = Skill("Rapid Concealment of the Silent Blade",
+                          "Desaparece nas sombras instantaneamente, tornando-se uma sombra fugaz que escapa da visão inimiga. O retorno repentino confunde os inimigos, permitindo ao Assassino desviar dos ataques.",
+                          0,
+                          0,
+                          20,
+                          0)
+
+deaths_embrace = Skill("Death’s Embrace Eternal Night",
+                          "Aceita a morte como uma aliada temporária, mergulhando em uma escuridão profunda. Durante esse abraço mortal, cada golpe desferido pelo Assassino é imbuido com o poder da própria morte, infligindo dano significativo. No entanto, esse pacto sombrio cobra um preço, consumindo a própria vida do Assassino.",
+                          50,
+                          0,
+                          30,
+                          0)
 
 roles = {
     "Knight": Role("Knight", knight_skills, 20, 40, 0, 100),
-    "Archer": Role("Archer", archer_skills, 40, 30, 40, 20)
+    "Archer": Role("Archer", archer_skills, 40, 30, 40, 20),
+    "Mage": Role("Mage", mage_skills, 60, 0, 80, 0),
+    "Assassin": Role("Assassin", assassin_skills, 70, 60, 0, 0)
 }
 
 knight = roles["Knight"]
 archer = roles["Archer"]
+mage = roles["Mage"]
+assassin = roles["Assassin"]
