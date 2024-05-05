@@ -7,11 +7,8 @@ class Role:
         self.mana = max(0, mana)
         self.shield = max(0, shield)
 
+    def __str__(self):
+        return self.name
+
     def has_skill(self, skill):
         return skill in self.skills
-
-    def get_skill(self, index):
-        if 0 <= index < len(self.skills):
-            return self.skills[index]
-        else:
-            return None

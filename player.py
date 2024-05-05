@@ -3,6 +3,9 @@ class Player:
         self.name = name
         self.role = role
 
+    def __str__(self):
+        return self.name
+
     def get_health(self):
         return self.role.health
 
