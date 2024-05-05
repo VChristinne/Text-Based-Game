@@ -1,10 +1,10 @@
 from prettytable import PrettyTable
 from colorama import Fore, Style
-import game_data
+import game_data_player
 
 
 def role_info(role_name):
-    role = game_data.roles[role_name]
+    role = game_data_player.roles[role_name]
 
     role_table = PrettyTable()
     role_table.field_names = ["Role", "Health", "Stamina", "Mana", "Shield"]
@@ -17,9 +17,14 @@ def role_info(role_name):
         print(f"{i}. {skill.name}")
     print(Style.RESET_ALL)
 
+def get_skill(role, index):
+    if 0 <= index < len(role.skills):
+        return role.skills[index]
+    else:
+        return None
 
 def skill_info(role_name, skill_index):
-    role = game_data.roles[role_name]
+    role = game_data_player.roles[role_name]
     skill = role.get_skill(skill_index - 1)
 
     if skill:
@@ -35,18 +40,35 @@ def skill_info(role_name, skill_index):
         print("Invalid skill index.")
         menu_role()
 
-
 def menu_role():
     print(Fore.RED + Style.BRIGHT + "\nROLES AVAILABLES:" + Fore.RESET)
-    for role_name in game_data.roles:
+    for role_name in game_data_player.roles:
         print(role_name)
     print(Style.RESET_ALL)
 
     role_name = input(Fore.BLUE + Style.BRIGHT + "> Enter role name: " + Style.RESET_ALL).capitalize()
-    if role_name in game_data.roles:
+    if role_name in game_data_player.roles:
         role_info(role_name)
         skill_index = int(input(Fore.BLUE + Style.BRIGHT + "> Enter skill index: " + Style.RESET_ALL))
         skill_info(role_name, skill_index)
     else:
         print("Invalid role name.")
         menu_role()
+
+def get_individualisms_list(self, index):
+    if 0 <= index < len(self.individualisms):
+        return self.individualisms[index]
+    else:
+        return None
+
+def get_associated_roles_list(self, index):
+    if 0 <= index < len(self.associated_roles):
+        return self.associated_roles[index]
+    else:
+        return None
+
+def get_associated_skills_list(self, index):
+    if 0 <= index < len(self.associated_skills):
+        return self.associated_skills[index]
+    else:
+        return None
