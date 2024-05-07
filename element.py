@@ -1,20 +1,22 @@
+from colorama import Fore, Style
+
 class Element:
     individualism_to_color = {
-        "Organisation": "White",
-        "Curiosity": "Blue",
-        "Self-concern": "Black",
-        "Emotion": "Red",
-        "Instinct": "Green",
+        "Organisation": Fore.YELLOW,
+        "Curiosity": Fore.BLUE,
+        "Self-concern": Fore.BLACK,
+        "Emotion": Fore.RED,
+        "Instinct": Fore.GREEN,
     }
 
-    def __init__(self, individualism, color, associated_roles, associated_skills):
+    def __init__(self, individualism, associated_roles, associated_skills):
         self.individualism = individualism
         self.color = self.individualism_to_color[individualism]
         self.associated_roles = associated_roles
         self.associated_skills = associated_skills
 
     def __str__(self):
-        return self.individualism
+        return f"{self.color}{self.individualism}{Fore.RESET}"
 
     def get_color(self):
         return self.color

@@ -39,7 +39,7 @@ def get_skill(role, index):
 
 def player_skill_info(role_name, skill_index):
     role = game_data.roles[role_name]
-    skill = get_skill(role, skill_index)
+    skill = get_skill(role, skill_index - 1)
 
     if skill:
         print(Fore.RED + Style.BRIGHT + f"\nPlayer {role.name} skill {skill_index}:" + Fore.RESET)
@@ -85,8 +85,9 @@ def get_associated_skills_list(self, index):
 
 def menu_role():
     print(Fore.RED + Style.BRIGHT + "\nROLES AVAILABLES:" + Fore.RESET)
-    for role_name in game_data.roles:
-        print(role_name)
+    for role_name, role in game_data.roles.items():
+        element = role.element
+        print(f"{role_name} ({element})")
     print(Style.RESET_ALL)
 
     role_name = input(Fore.BLUE + Style.BRIGHT + "> Enter role name: " + Style.RESET_ALL).capitalize()
