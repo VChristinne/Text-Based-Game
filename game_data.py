@@ -1,3 +1,4 @@
+import element
 from skill import Skill
 from role import Role
 
@@ -188,10 +189,10 @@ shadowy_curse = Skill("Shadowy Curse",
 ghost_skills = [etheral_transposition, frosty_touch, haunting_illusions, shadowy_curse]
 
 roles = {
-    "Knight": Role("Knight", knight_skills, 20, 40, 0, 100),
-    "Archer": Role("Archer", archer_skills, 40, 30, 40, 20),
-    "Mage": Role("Mage", mage_skills, 60, 0, 80, 0),
-    "Assassin": Role("Assassin", assassin_skills, 70, 60, 0, 0),
+    "Knight": Role("Knight", "Organisation", knight_skills, 20, 40, 0, 100),
+    "Archer": Role("Archer", "Instinct", archer_skills, 40, 30, 40, 20),
+    "Mage": Role("Mage", "Curiosity", mage_skills, 60, 0, 80, 0),
+    "Assassin": Role("Assassin", "Self-concern", assassin_skills, 70, 60, 0, 0),
 }
 
 knight = roles["Knight"]
@@ -200,7 +201,7 @@ mage = roles["Mage"]
 assassin = roles["Assassin"]
 
 enemies = {
-    "Ghost": Role("Ghost", ghost_skills, 100, 100, 100, 0)
+    "Ghost": Role("Ghost", "Self-concern", ghost_skills, 100, 100, 100, 0)
 }
 
 ghost = enemies["Ghost"]

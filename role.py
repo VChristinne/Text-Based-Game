@@ -1,6 +1,7 @@
 class Role:
-    def __init__(self, name, skills, health, stamina, mana, shield):
+    def __init__(self, name, element, skills, health, stamina, mana, shield):
         self.name = name
+        self.element = element
         self.skills = skills
         self.health = max(0, health)
         self.stamina = max(0, stamina)

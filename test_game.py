@@ -11,5 +11,8 @@ class TestGame(unittest.TestCase):
         game_setup.enemies_info('Ghost')
         game_setup.enemy_skill_info('Ghost', 1)
 
+    def test_get_individualisms_list(self):
+        pass
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)

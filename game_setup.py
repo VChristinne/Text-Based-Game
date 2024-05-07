@@ -7,8 +7,8 @@ def role_info(role_name):
     role = game_data.roles[role_name]
 
     role_table = PrettyTable()
-    role_table.field_names = ["Role", "Health", "Stamina", "Mana", "Shield"]
-    role_table.add_row([role.name, role.health, role.stamina, role.mana, role.shield])
+    role_table.field_names = ["Role", "Element", "Health", "Stamina", "Mana", "Shield"]
+    role_table.add_row([role.name, role.element, role.health, role.stamina, role.mana, role.shield])
     print(Fore.RED + Style.BRIGHT + "\nPlayer Role Info:" + Fore.RESET)
     print(role_table)
 
@@ -21,8 +21,8 @@ def enemies_info(role_name):
     enemy = game_data.enemies[role_name]
 
     role_table = PrettyTable()
-    role_table.field_names = ["Role", "Health", "Stamina", "Mana", "Shield"]
-    role_table.add_row([enemy.name, enemy.health, enemy.stamina, enemy.mana, enemy.shield])
+    role_table.field_names = ["Role", "Element", "Health", "Stamina", "Mana", "Shield"]
+    role_table.add_row([enemy.name, enemy.element, enemy.health, enemy.stamina, enemy.mana, enemy.shield])
     print(Fore.RED + Style.BRIGHT + "\nEnemy Role Info:" + Fore.RESET)
     print(role_table)
 
@@ -70,12 +70,6 @@ def enemy_skill_info(role_name, skill_index):
     else:
         print("Invalid skill index.")
         menu_role()
-
-def get_individualisms_list(self, index):
-    if 0 <= index < len(self.individualisms):
-        return self.individualisms[index]
-    else:
-        return None
 
 def get_associated_roles_list(self, index):
     if 0 <= index < len(self.associated_roles):
