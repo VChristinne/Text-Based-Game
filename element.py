@@ -11,15 +11,15 @@ class Element:
 
     def __init__(self, individualism, associated_roles, associated_skills):
         self.individualism = individualism
-        self.color = self.individualism_to_color[individualism]
+        self.colour = self.individualism_to_color[individualism]
         self.associated_roles = associated_roles
         self.associated_skills = associated_skills
 
     def __str__(self):
-        return f"{self.color}{self.individualism}{Fore.RESET}"
+        return f"{self.colour}{self.individualism}{Fore.RESET}"
 
     def get_color(self):
-        return self.color
+        return self.colour
 
     def has_role(self, role):
         return role in self.associated_roles
