@@ -1,4 +1,4 @@
-from colorama import Fore, Style
+from colorama import Fore
 
 class Element:
     individualism_to_color = {
