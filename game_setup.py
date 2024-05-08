@@ -71,11 +71,12 @@ def enemy_skill_info(role_name, skill_index):
         print("Invalid skill index.")
         menu_role()
 
-def get_associated_roles_list(self, index):
-    if 0 <= index < len(self.associated_roles):
-        return self.associated_roles[index]
-    else:
-        return None
+def get_associated_roles_list(element_name, roles):
+    element = game_data.elements[element_name]
+    for role_name, role in roles.items():
+        if role.element == element:
+            element.associated_roles.append(role)
+    return ', '.join(str(role) for role in element.associated_roles)
 
 def get_associated_skills_list(self, index):
     if 0 <= index < len(self.associated_skills):

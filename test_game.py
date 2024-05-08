@@ -1,5 +1,7 @@
 import unittest
 from unittest.mock import patch
+
+import game_data
 from element import Element
 import game_setup
 
@@ -15,6 +17,17 @@ class TestGame(unittest.TestCase):
     def test_individualisms_list(self):
         individualism_list = list(Element.individualism_to_color.keys())
         print(individualism_list)
+
+    def test_roles_associated_list(self):
+        print(game_setup.get_associated_roles_list('Organisation', game_setup.game_data.roles))
+        print(game_setup.get_associated_roles_list('Curiosity', game_setup.game_data.roles))
+        print(game_setup.get_associated_roles_list('Self-concern', game_setup.game_data.roles))
+        print(game_setup.get_associated_roles_list('Emotion', game_setup.game_data.roles))
+        print(game_setup.get_associated_roles_list('Instinct', game_setup.game_data.roles))
+
+def test_skills_associated_list(self):
+        skills_associated_list = game_data.elements['Organisation'].get_associated_skills()
+        print(skills_associated_list)
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

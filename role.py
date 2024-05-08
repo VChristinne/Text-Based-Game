@@ -9,7 +9,7 @@ class Role:
         self.shield = max(0, shield)
 
     def __str__(self):
-        return self.name
+        return f"Role: {self.name}, Element: {self.element}, Health: {self.health}, Stamina: {self.stamina}, Mana: {self.mana}, Shield: {self.shield}"
 
     def has_skill(self, skill):
         return skill in self.skills
