@@ -83,11 +83,6 @@ def get_associated_skills_list(self, index):
     else:
         return None
 
-def get_individualisms_list(individualism_to_color, index):
-    if 0 <= index < len(individualism_to_color):
-        return individualism_to_color[index]
-    else:
-        return None
 
 def menu_role():
     print(Fore.RED + Style.BRIGHT + "\nROLES AVAILABLES:" + Fore.RESET)
