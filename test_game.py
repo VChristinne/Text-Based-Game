@@ -1,6 +1,5 @@
 import unittest
 from unittest.mock import patch
-
 from element import Element
 import game_setup
 
@@ -13,6 +12,9 @@ class TestGame(unittest.TestCase):
         game_setup.enemies_info('Ghost')
         game_setup.enemy_skill_info('Ghost', 1)
 
+    def test_individualisms_list(self):
+        individualism_list = list(Element.individualism_to_color.keys())
+        print(individualism_list)
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
