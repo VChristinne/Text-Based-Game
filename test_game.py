@@ -25,7 +25,7 @@ class TestGame(unittest.TestCase):
         print(game_setup.get_associated_roles_list('Emotion', game_setup.game_data.roles))
         print(game_setup.get_associated_roles_list('Instinct', game_setup.game_data.roles))
 
-def test_skills_associated_list(self):
+    def test_skills_associated_list(self):
         skills_associated_list = game_data.elements['Organisation'].get_associated_skills()
         print(skills_associated_list)
 
