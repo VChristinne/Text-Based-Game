@@ -1,5 +1,3 @@
-import element
-import game_setup
 from element import Element
 from skill import Skill
 from role import Role
