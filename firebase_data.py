@@ -4,16 +4,6 @@ from firebase_setup import conect_firebase
 conect_firebase()
 db = firestore.client()
 
-def get_data(collection, document):
-    doc_ref = db.collection(collection).document(document)
-    doc = doc_ref.get()
-
-    if doc.exists:
-        return doc.to_dict()
-    else:
-        print(f"No such document {document} in collection {collection}")
-        return None
-
 def get_all_data(collection):
     docs = db.collection(collection).stream()
     data = {}
