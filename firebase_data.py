@@ -20,13 +20,13 @@ def load_game_data():
     elements = get_all_data('elements')
     roles = get_all_data('roles')
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     load_game_data()
+    
     print("Elements:")
-
     for key, value in elements.items():
         print(f"{key}: {value}")
-    print("\nRoles:")
 
+    print("\nRoles:")
     for key, value in roles.items():
         print(f"{key}: {value}")
