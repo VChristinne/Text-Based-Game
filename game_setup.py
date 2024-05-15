@@ -1,3 +1,4 @@
+import prettytable
 from prettytable import PrettyTable
 from colorama import Fore, Style
 import firebase_data
@@ -8,6 +9,7 @@ def get_role(role_name):
     role_table = PrettyTable()
     role_table.field_names = ["Role", "Element", "Health", "Stamina", "Mana", "Shield"]
     role_table.add_row([role['name'], role['element'], role['health'], role['stamina'], role['mana'], role['shield']])
+    role_table.set_style(prettytable.DOUBLE_BORDER)
     print(Fore.RED + Style.BRIGHT + "\nPlayer Role Info:" + Fore.RESET)
     print(role_table)
 
@@ -23,6 +25,7 @@ def get_element(element_name):
     element_table.field_names = ["Colour", "Associated Roles"]
     associated_roles = "\n".join(element['associated_roles'])
     element_table.add_row([element['colour'], associated_roles])
+    element_table.set_style(prettytable.DOUBLE_BORDER)
 
     print(Fore.RED + Style.BRIGHT + f"\n{element_name} Info" + Fore.RESET)
     print(element_table)
@@ -37,15 +40,16 @@ def get_skill(role_name, skill_index):
 def get_player_skill(role_name, skill_index):
     role = firebase_data.roles[role_name]
     skill = get_skill(role_name, skill_index - 1)
+    skill_table = PrettyTable()
 
     if skill:
         print(Fore.RED + Style.BRIGHT + f"\n{role['name']} skill {skill_index}:" + Fore.RESET)
-        print(f"{skill['name']}\n"
-              f"{skill['description']}\n"
-              f"Damage: {skill['damage']}\n"
-              f"Health Cost: {skill['health_cost']}\n"
-              f"Stamina Cost: {skill['stamina_cost']}\n"
-              f"Mana Cost: {skill['mana_cost']}")
+        skill_table.field_names = ["Name", "Description", "Damage", "Health Cost", "Stamina Cost", "Mana Cost"]
+        skill_table.add_row([skill['name'], skill['description'], skill['damage'], skill['health_cost'], skill['stamina_cost'], skill['mana_cost']])
+        skill_table.set_style(prettytable.DOUBLE_BORDER)
+        skill_table.align = "l"
+        skill_table.max_width = 50
+        print(skill_table)
         print(Style.RESET_ALL)
     else:
         print("Invalid skill index.")
@@ -101,3 +105,33 @@ def menu_skill():
         print("Invalid role name.")
         menu_skill()
 
+def menu_help():
+    pass
+
+def main_menu():
+    print(Fore.RED + Style.BRIGHT + "\nMAIN MENU" + Fore.RESET)
+    menu_table = PrettyTable()
+    menu_table.add_column("Options", ["1", "2", "3", "4", "5"])
+    menu_table.add_column("Actions", ["Role", "Element", "Skill", "Help", "Exit"])
+    menu_table.align = "l"
+    menu_table.align["Options"] = "c"
+    menu_table.set_style(prettytable.DOUBLE_BORDER)
+    print(menu_table)
+    print(Style.RESET_ALL)
+
+    option = int(input(Fore.BLUE + Style.BRIGHT + "> Enter option: " + Style.RESET_ALL))
+
+    match option:
+        case 1:
+            menu_role()
+        case 2:
+            menu_element()
+        case 3:
+            menu_skill()
+        case 4:
+            menu_help()
+        case 5:
+            exit()
+        case _:
+            print("Invalid option.")
+            main_menu()
