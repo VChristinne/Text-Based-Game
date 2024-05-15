@@ -27,7 +27,7 @@ def player_skill_info(role_name, skill_index):
     skill = get_skill(role_name, skill_index - 1)
 
     if skill:
-        print(Fore.RED + Style.BRIGHT + f"\nPlayer {role['name']} skill {skill_index}:" + Fore.RESET)
+        print(Fore.RED + Style.BRIGHT + f"\n{role['name']} skill {skill_index}:" + Fore.RESET)
         print(f"{skill['name']}\n"
               f"{skill['description']}\n"
               f"Damage: {skill['damage']}\n"
@@ -50,8 +50,24 @@ def menu_role():
     role_name = input(Fore.BLUE + Style.BRIGHT + "> Enter role name: " + Style.RESET_ALL).capitalize()
     if role_name in firebase_data.roles:
         role_info(role_name)
+    else:
+        print("Invalid role name.")
+        menu_role()
+
+def menu_skill():
+    firebase_data.load_game_data()
+
+    print(Fore.RED + Style.BRIGHT + "\nSKILLS AVAILABLES:" + Fore.RESET)
+    for role_name, role in firebase_data.roles.items():
+        print(Fore.MAGENTA + f"\n{role_name}" + Fore.RESET)
+        for i, skill in enumerate(role['skills'], start=1):
+            print(f"{i}. {skill['name']}")
+    print(Style.RESET_ALL)
+
+    role_name = input(Fore.BLUE + Style.BRIGHT + "> Enter role name: " + Style.RESET_ALL).capitalize()
+    if role_name in firebase_data.roles:
         skill_index = int(input(Fore.BLUE + Style.BRIGHT + "> Enter skill index: " + Style.RESET_ALL))
         player_skill_info(role_name, skill_index)
     else:
         print("Invalid role name.")
-        menu_role()
+        menu_skill()
