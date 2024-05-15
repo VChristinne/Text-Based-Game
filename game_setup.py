@@ -2,7 +2,7 @@ from prettytable import PrettyTable
 from colorama import Fore, Style
 import firebase_data
 
-def role_info(role_name):
+def get_role(role_name):
     role = firebase_data.roles[role_name]
 
     role_table = PrettyTable()
@@ -16,7 +16,7 @@ def role_info(role_name):
         print(f"{i}. {skill['name']}")
     print(Style.RESET_ALL)
 
-def element_info(element_name):
+def get_element(element_name):
     element = firebase_data.elements[element_name]
 
     element_table = PrettyTable()
@@ -34,7 +34,7 @@ def get_skill(role_name, skill_index):
         return role['skills'][skill_index]
     return None
 
-def player_skill_info(role_name, skill_index):
+def get_player_skill(role_name, skill_index):
     role = firebase_data.roles[role_name]
     skill = get_skill(role_name, skill_index - 1)
 
@@ -61,10 +61,27 @@ def menu_role():
 
     role_name = input(Fore.BLUE + Style.BRIGHT + "> Enter role name: " + Style.RESET_ALL).capitalize()
     if role_name in firebase_data.roles:
-        role_info(role_name)
+        get_role(role_name)
     else:
         print("Invalid role name.")
         menu_role()
+
+def menu_element():
+    firebase_data.load_game_data()
+
+    print(Fore.RED + Style.BRIGHT + "\nELEMENTS AVAILABLES" + Fore.RESET)
+    elements_list = list(firebase_data.elements.items())
+    for i, (element_name, element) in enumerate(elements_list, start=1):
+        print(f"{i}. {element_name}")
+    print(Style.RESET_ALL)
+
+    element_index = int(input(Fore.BLUE + Style.BRIGHT + "> Enter element index: " + Style.RESET_ALL))
+    if 1 <= element_index <= len(elements_list):
+        element_name = elements_list[element_index - 1][0]
+        get_element(element_name)
+    else:
+        print("Invalid element index.")
+        menu_element()
 
 def menu_skill():
     firebase_data.load_game_data()
@@ -79,24 +96,8 @@ def menu_skill():
     role_name = input(Fore.BLUE + Style.BRIGHT + "> Enter role name: " + Style.RESET_ALL).capitalize()
     if role_name in firebase_data.roles:
         skill_index = int(input(Fore.BLUE + Style.BRIGHT + "> Enter skill index: " + Style.RESET_ALL))
-        player_skill_info(role_name, skill_index)
+        get_player_skill(role_name, skill_index)
     else:
         print("Invalid role name.")
         menu_skill()
 
-def menu_elements():
-    firebase_data.load_game_data()
-
-    print(Fore.RED + Style.BRIGHT + "\nELEMENTS AVAILABLES" + Fore.RESET)
-    elements_list = list(firebase_data.elements.items())
-    for i, (element_name, element) in enumerate(elements_list, start=1):
-        print(f"{i}. {element_name}")
-    print(Style.RESET_ALL)
-
-    element_index = int(input(Fore.BLUE + Style.BRIGHT + "> Enter element index: " + Style.RESET_ALL))
-    if 1 <= element_index <= len(elements_list):
-        element_name = elements_list[element_index - 1][0]
-        element_info(element_name)
-    else:
-        print("Invalid element index.")
-        menu_elements()
