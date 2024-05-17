@@ -10,3 +10,11 @@ def player(username, role, element):
         "role": role,
         "element": element,
     }
+
+def turn(round, begin_at, end_at):
+    return {
+        "round": round,
+        "begin_at": begin_at,
+        "end_at": end_at
+    }
+
