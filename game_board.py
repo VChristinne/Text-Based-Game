@@ -18,3 +18,22 @@ def turn(round, begin_at, end_at):
         "end_at": end_at
     }
 
+def create_board(match_obj, players, turns):
+    board = {
+        "match": match_obj,
+        "players": players,
+        "turns": turns
+    }
+    return board
+
+def get_board(board):
+    return board
+
+def update_board(board, match_obj, players, turns):
+    board["match"] = match_obj
+    board["players"] = players
+    board["turns"] = turns
+    return board
+
+def delete_board(board):
+    del board
