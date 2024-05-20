@@ -111,8 +111,8 @@ def menu_help():
 def main_menu():
     print(Fore.RED + Style.BRIGHT + "\nMAIN MENU" + Fore.RESET)
     menu_table = PrettyTable()
-    menu_table.add_column("Options", ["1", "2", "3", "4", "5"])
-    menu_table.add_column("Actions", ["Role", "Element", "Skill", "Help", "Exit"])
+    menu_table.add_column("Options", ["1", "2", "3", "4", "5", "6"])
+    menu_table.add_column("Actions", ["Start game", "Role Info", "Element Info", "Skill Info", "Help", "Exit"])
     menu_table.align = "l"
     menu_table.align["Options"] = "c"
     menu_table.set_style(prettytable.DOUBLE_BORDER)
@@ -123,14 +123,16 @@ def main_menu():
 
     match option:
         case 1:
-            menu_role()
+            pass
         case 2:
-            menu_element()
+            menu_role()
         case 3:
-            menu_skill()
+            menu_element()
         case 4:
-            menu_help()
+            menu_skill()
         case 5:
+            menu_help()
+        case 6:
             exit()
         case _:
             print("Invalid option.")
