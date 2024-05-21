@@ -1,3 +1,4 @@
+import os
 import prettytable
 from prettytable import PrettyTable
 from colorama import Fore, Style
@@ -10,7 +11,7 @@ def get_role(role_name):
     role_table.field_names = ["Role", "Element", "Health", "Stamina", "Mana", "Shield"]
     role_table.add_row([role['name'], role['element'], role['health'], role['stamina'], role['mana'], role['shield']])
     role_table.set_style(prettytable.DOUBLE_BORDER)
-    print(Fore.RED + Style.BRIGHT + "\nPlayer Role Info:" + Fore.RESET)
+    print(Fore.RED + Style.BRIGHT + "\nRole Info:" + Fore.RESET)
     print(role_table)
 
     print(Fore.RED + Style.BRIGHT + "\nSkills:" + Fore.RESET)
@@ -55,6 +56,22 @@ def get_player_skill(role_name, skill_index):
         print("Invalid skill index.")
         menu_role()
 
+def menu_game():
+    print(Fore.GREEN + Style.BRIGHT + "\nSTARTING GAME" + Fore.RESET)
+    print(Style.RESET_ALL)
+
+    username = input(Fore.BLUE + Style.BRIGHT + "> Enter username: " + Style.RESET_ALL)
+    role_name = menu_role()
+    print(Fore.MAGENTA + Style.BRIGHT + f">> {username} selected {role_name} role <<" + Style.RESET_ALL)
+
+    reselect = input(Fore.BLUE + Style.BRIGHT + "\n> Want to reselect the choices? (yes/no) " + Style.RESET_ALL)
+    if reselect.lower() == "yes":
+        os.system("clear")
+        menu_game()
+    else:
+        print(Fore.GREEN + "\nGame started." + Fore.RESET)
+        print(Style.RESET_ALL)
+
 def menu_role():
     firebase_data.load_game_data()
 
@@ -66,6 +83,7 @@ def menu_role():
     role_name = input(Fore.BLUE + Style.BRIGHT + "> Enter role name: " + Style.RESET_ALL).capitalize()
     if role_name in firebase_data.roles:
         get_role(role_name)
+        return role_name
     else:
         print("Invalid role name.")
         menu_role()
@@ -123,7 +141,7 @@ def main_menu():
 
     match option:
         case 1:
-            pass
+            menu_game()
         case 2:
             menu_role()
         case 3:
