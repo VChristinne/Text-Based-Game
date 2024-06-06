@@ -64,6 +64,7 @@ def menu_game():
     role_name = menu_role()
     print(Fore.MAGENTA + Style.BRIGHT + f">> {username} selected {role_name} role <<" + Style.RESET_ALL)
 
+    """
     reselect = input(Fore.BLUE + Style.BRIGHT + "\n> Want to reselect the choices? (yes/no) " + Style.RESET_ALL)
     if reselect.lower() == "yes":
         os.system("clear")
@@ -71,6 +72,7 @@ def menu_game():
     else:
         print(Fore.GREEN + "\nGame started." + Fore.RESET)
         print(Style.RESET_ALL)
+    """
 
 def menu_role():
     firebase_data.load_game_data()
