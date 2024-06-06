@@ -60,10 +60,10 @@ def menu_game():
     print(Style.RESET_ALL)
 
     username = input(Fore.BLUE + Style.BRIGHT + "> Enter username: " + Style.RESET_ALL)
-    role_name = menu_role()
-    element_name = role_name['element']
-    print(Fore.MAGENTA + Style.BRIGHT + f">> {username} selected {role_name} role <<" + Style.RESET_ALL)
-    return username, role_name, element_name
+    role = menu_role()
+    element_name = role['element']
+    print(Fore.MAGENTA + Style.BRIGHT + f">> {username} selected {role['name']} role <<" + Style.RESET_ALL)
+    return username, role['name'], element_name
 
     """
     reselect = input(Fore.BLUE + Style.BRIGHT + "\n> Want to reselect the choices? (yes/no) " + Style.RESET_ALL)
@@ -86,7 +86,7 @@ def menu_role():
     role_name = input(Fore.BLUE + Style.BRIGHT + "> Enter role name: " + Style.RESET_ALL).capitalize()
     if role_name in firebase_data.roles:
         get_role(role_name)
-        return role_name
+        return firebase_data.roles[role_name]
     else:
         print("Invalid role name.")
         menu_role()
