@@ -1,4 +1,4 @@
-import os
+import time
 import prettytable
 from prettytable import PrettyTable
 from colorama import Fore, Style
@@ -63,6 +63,7 @@ def menu_game():
     username = input(Fore.BLUE + Style.BRIGHT + "> Enter username: " + Style.RESET_ALL)
     role_name = menu_role()
     print(Fore.MAGENTA + Style.BRIGHT + f">> {username} selected {role_name} role <<" + Style.RESET_ALL)
+    return username, role_name
 
     """
     reselect = input(Fore.BLUE + Style.BRIGHT + "\n> Want to reselect the choices? (yes/no) " + Style.RESET_ALL)
@@ -128,6 +129,27 @@ def menu_skill():
 def menu_help():
     pass
 
+def print_board(board):
+    print("\nMatch:")
+    print("  Players:")
+    for player in board['match']['players'][0]:
+        print(f"    Username: {player['username']}")
+    print(f"  Current Turn: {board['match']['current_turn']}")
+
+    print("\nPlayers:")
+    for player in board['players']:
+        print(f"  Username: {player['username']}")
+        print(f"  Role: {player['role']}")
+        print(f"  Element: {player['element']}")
+
+    print("\nTurns:")
+    for turn in board['turns']:
+        begin_at = time.strftime("%H:%M:%S", turn['begin_at'])
+        end_at = time.strftime("%H:%M:%S", turn['end_at'])
+        print(f"  Round: {turn['round']}")
+        print(f"  Begin At: {begin_at}")
+        print(f"  End At: {end_at}")
+
 def main_menu():
     print(Fore.RED + Style.BRIGHT + "\nMAIN MENU" + Fore.RESET)
     menu_table = PrettyTable()
@@ -143,7 +165,7 @@ def main_menu():
 
     match option:
         case 1:
-            menu_game()
+            return menu_game()
         case 2:
             menu_role()
         case 3:
@@ -156,4 +178,4 @@ def main_menu():
             exit()
         case _:
             print("Invalid option.")
-            main_menu()
+            return main_menu()
