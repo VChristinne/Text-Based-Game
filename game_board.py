@@ -11,7 +11,7 @@ def player(username, role, element):
         "element": element,
     }
 
-def turn(round, begin_at, end_at):
+def turn(round, begin_at, end_at=None):
     return {
         "round": round,
         "begin_at": begin_at,
