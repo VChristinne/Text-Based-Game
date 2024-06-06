@@ -1,13 +1,12 @@
-import time
+import os
 import prettytable
-from prettytable import PrettyTable
 from colorama import Fore, Style
 import firebase_data
 
 def get_role(role_name):
     role = firebase_data.roles[role_name]
 
-    role_table = PrettyTable()
+    role_table = prettytable.PrettyTable()
     role_table.field_names = ["Role", "Element", "Health", "Stamina", "Mana", "Shield"]
     role_table.add_row([role['name'], role['element'], role['health'], role['stamina'], role['mana'], role['shield']])
     role_table.set_style(prettytable.DOUBLE_BORDER)
@@ -22,7 +21,7 @@ def get_role(role_name):
 def get_element(element_name):
     element = firebase_data.elements[element_name]
 
-    element_table = PrettyTable()
+    element_table = prettytable.PrettyTable()
     element_table.field_names = ["Colour", "Associated Roles"]
     associated_roles = "\n".join(element['associated_roles'])
     element_table.add_row([element['colour'], associated_roles])
@@ -41,7 +40,7 @@ def get_skill(role_name, skill_index):
 def get_player_skill(role_name, skill_index):
     role = firebase_data.roles[role_name]
     skill = get_skill(role_name, skill_index - 1)
-    skill_table = PrettyTable()
+    skill_table = prettytable.PrettyTable()
 
     if skill:
         print(Fore.RED + Style.BRIGHT + f"\n{role['name']} skill {skill_index}:" + Fore.RESET)
@@ -62,8 +61,9 @@ def menu_game():
 
     username = input(Fore.BLUE + Style.BRIGHT + "> Enter username: " + Style.RESET_ALL)
     role_name = menu_role()
+    element_name = role_name['element']
     print(Fore.MAGENTA + Style.BRIGHT + f">> {username} selected {role_name} role <<" + Style.RESET_ALL)
-    return username, role_name
+    return username, role_name, element_name
 
     """
     reselect = input(Fore.BLUE + Style.BRIGHT + "\n> Want to reselect the choices? (yes/no) " + Style.RESET_ALL)
@@ -144,15 +144,15 @@ def print_board(board):
 
     print("\nTurns:")
     for turn in board['turns']:
-        begin_at = time.strftime("%H:%M:%S", turn['begin_at'])
-        end_at = time.strftime("%H:%M:%S", turn['end_at'])
+        begin_at = turn['begin_at'].strftime("%H:%M:%S")
+        end_at = turn['end_at'].strftime("%H:%M:%S") if turn['end_at'] else None
         print(f"  Round: {turn['round']}")
         print(f"  Begin At: {begin_at}")
         print(f"  End At: {end_at}")
 
 def main_menu():
     print(Fore.RED + Style.BRIGHT + "\nMAIN MENU" + Fore.RESET)
-    menu_table = PrettyTable()
+    menu_table = prettytable.PrettyTable()
     menu_table.add_column("Options", ["1", "2", "3", "4", "5", "6"])
     menu_table.add_column("Actions", ["Start game", "Role Info", "Element Info", "Skill Info", "Help", "Exit"])
     menu_table.align = "l"
@@ -165,6 +165,7 @@ def main_menu():
 
     match option:
         case 1:
+            os.system("clear")
             return menu_game()
         case 2:
             menu_role()
