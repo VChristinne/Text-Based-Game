@@ -144,8 +144,8 @@ def print_board(board):
 
     print("\nTurns:")
     for turn in board['turns']:
-        begin_at = turn['begin_at'].strftime("%H:%M:%S")
-        end_at = turn['end_at'].strftime("%H:%M:%S") if turn['end_at'] else None
+        begin_at = turn['begin_at'].strftime("%I:%M:%S %p")
+        end_at = turn['end_at'].strftime("%I:%M:%S %p") if turn['end_at'] else None
         print(f"  Round: {turn['round']}")
         print(f"  Begin At: {begin_at}")
         print(f"  End At: {end_at}")
