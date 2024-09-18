@@ -1,9 +1,10 @@
 import unittest
 from unittest.mock import patch
 import game_setup
+import main
 
 
-class TestGame(unittest.TestCase):
+class TestMenu(unittest.TestCase):
     
     def test_role_selected(self):
         inputs = ['1', 'Yuzu', 'mage', 'no']
@@ -39,6 +40,15 @@ class TestGame(unittest.TestCase):
             print(f"\nSimulated inputs: {inputs}")
             game_setup.main_menu()
 
+
+class TestBoard(unittest.TestCase):
+    
+    def test_board(self):
+        inputs = ['1', 'Yuzu', 'mage', 'no']
+        with patch('builtins.input', side_effect=inputs):
+            print(f"\nSimulated inputs: {inputs}")
+            main.main()
+            
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
