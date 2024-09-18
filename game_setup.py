@@ -73,6 +73,7 @@ def menu_game():
         os.system("clear")
         menu_game()
     else:
+        os.system("clear")
         print(Fore.GREEN + "\nGame started." + Fore.RESET)
         print(Style.RESET_ALL)
 
