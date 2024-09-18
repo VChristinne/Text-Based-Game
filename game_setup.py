@@ -18,6 +18,7 @@ def get_role(role_name):
         print(f"{i}. {skill['name']}")
     print(Style.RESET_ALL)
 
+
 def get_element(element_name):
     element = firebase_data.elements[element_name]
 
@@ -31,11 +32,13 @@ def get_element(element_name):
     print(element_table)
     print(Style.RESET_ALL)
 
+
 def get_skill(role_name, skill_index):
     role = firebase_data.roles[role_name]
     if skill_index < len(role['skills']):
         return role['skills'][skill_index]
     return None
+
 
 def get_player_skill(role_name, skill_index):
     role = firebase_data.roles[role_name]
@@ -55,6 +58,7 @@ def get_player_skill(role_name, skill_index):
         print("Invalid skill index.")
         menu_role()
 
+
 def menu_game():
     print(Fore.GREEN + Style.BRIGHT + "\nSTARTING GAME" + Fore.RESET)
     print(Style.RESET_ALL)
@@ -63,9 +67,7 @@ def menu_game():
     role = menu_role()
     element_name = role['element']
     print(Fore.MAGENTA + Style.BRIGHT + f">> {username} selected {role['name']} role <<" + Style.RESET_ALL)
-    return username, role['name'], element_name
 
-    """
     reselect = input(Fore.BLUE + Style.BRIGHT + "\n> Want to reselect the choices? (yes/no) " + Style.RESET_ALL)
     if reselect.lower() == "yes":
         os.system("clear")
@@ -73,7 +75,8 @@ def menu_game():
     else:
         print(Fore.GREEN + "\nGame started." + Fore.RESET)
         print(Style.RESET_ALL)
-    """
+
+    return username, role['name'], element_name
 
 def menu_role():
     firebase_data.load_game_data()
@@ -91,6 +94,7 @@ def menu_role():
         print("Invalid role name.")
         menu_role()
 
+
 def menu_element():
     firebase_data.load_game_data()
 
@@ -107,6 +111,7 @@ def menu_element():
     else:
         print("Invalid element index.")
         menu_element()
+
 
 def menu_skill():
     firebase_data.load_game_data()
@@ -126,8 +131,10 @@ def menu_skill():
         print("Invalid role name.")
         menu_skill()
 
+
 def menu_help():
     pass
+
 
 def print_board(board):
     print("\nMatch:")
@@ -149,6 +156,7 @@ def print_board(board):
         print(f"  Round: {turn['round']}")
         print(f"  Begin At: {begin_at}")
         print(f"  End At: {end_at}")
+
 
 def main_menu():
     print(Fore.RED + Style.BRIGHT + "\nMAIN MENU" + Fore.RESET)
