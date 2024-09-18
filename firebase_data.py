@@ -1,7 +1,7 @@
 from firebase_admin import firestore
-from firebase_setup import conect_firebase
+from firebase_setup import connect_firebase
 
-conect_firebase()
+connect_firebase()
 db = firestore.client()
 
 def get_all_data(collection):
