@@ -24,7 +24,7 @@
 
 2. **Virtual Environment**
     ```bash
-    python -m venv .venv
+    python3 -m venv .venv
     ```
     ```
     source .venv/bin/activate
@@ -37,7 +37,7 @@
 
 4. **Run the game**
     ```bash
-    python main.py
+    python3 main.py
     ```
 
 
