@@ -10,10 +10,10 @@ def player(username, role, element):
         "role": role,
         "element": element,
     }
-
-def turn(round, begin_at, end_at=None, total_time=None):
+ 
+def turn(round_obj, begin_at, end_at=None, total_time=None):
     return {
-        "round": round,
+        "round": round_obj,
         "begin_at": begin_at,
         "end_at": end_at,
         "total_time": total_time
