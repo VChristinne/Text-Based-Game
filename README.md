@@ -11,6 +11,36 @@
 ![Static Badge](https://badgen.net/badge/IDE/PyCharm?color=green)
 [![License](https://badgen.net/badge/license/MIT?color=black)](https://opensource.org/license/mit/)
 
+## How to Use
+
+
+1. **Clone** the repository, HTTPS or GitHub CLI.
+    ```bash
+    git clone https://github.com/VChristinne/Text-Based-Game.git
+    ```
+    ```bash
+    gh repo clone VChristinne/Text-Based-Game
+    ```
+
+2. **Virtual Environment**
+    ```bash
+    python -m venv .venv
+    ```
+    ```
+    source .venv/bin/activate
+    ```
+
+3. **Install the requirements** 
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+4. **Run the game**
+    ```bash
+    python main.py
+    ```
+
+
 ## Features
 
 ## Class Skills
