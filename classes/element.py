@@ -1,5 +1,6 @@
 from colorama import Fore
 
+
 class Element:
     individualism_to_color = {
         "Organisation": Fore.YELLOW,

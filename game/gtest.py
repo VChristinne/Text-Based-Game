@@ -1,6 +1,6 @@
 import unittest
 from unittest.mock import patch
-import game_setup
+import gsetup
 import main
 
 
