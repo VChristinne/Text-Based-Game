@@ -1,27 +1,48 @@
 import os
 import prettytable
 from colorama import Fore, Style
-from firebase import fdata
+from database import data
 
 
 def get_role(role_name):
-    role = fdata.roles[role_name]
+    role = data.get_role_by_name(role_name)
+    if not role:
+        print(f"Role '{role_name}' not found.")
+        return
+
+    element_name = data.get_element_name_by_id(role['element_id'])
 
     role_table = prettytable.PrettyTable()
     role_table.field_names = ["Role", "Element", "Health", "Stamina", "Mana", "Shield"]
-    role_table.add_row([role['name'], role['element'], role['health'], role['stamina'], role['mana'], role['shield']])
+    role_table.add_row([role['name'], element_name, role['health'], role["stamina"], role['mana'], role['shield']])
     role_table.set_style(prettytable.DOUBLE_BORDER)
     print(Fore.RED + Style.BRIGHT + "\nRole Info:" + Fore.RESET)
     print(role_table)
 
     print(Fore.RED + Style.BRIGHT + "\nSkills:" + Fore.RESET)
-    for i, skill in enumerate(role['skills'], start=1):
-        print(f"{i}. {skill['name']}")
+    skills = data.get_all_skills(role['id'])
+    skill_table = prettytable.PrettyTable()
+    skill_table.field_names = ["Name", "Damage", "Health Cost", "Mana Cost", "Stamina Cost"]
+    for skill in skills:
+        skill_table.add_row(
+            [
+                skill['name'], 
+                skill['damage'], 
+                skill['health_cost'], 
+                skill['mana_cost'], 
+                skill['stamina_cost'], 
+            ]
+        )
+    skill_table.set_style(prettytable.DOUBLE_BORDER)
+    print(skill_table)
     print(Style.RESET_ALL)
 
 
 def get_element(element_name):
-    element = fdata.elements[element_name]
+    element = data.get_element_by_name(element_name)
+    if not element:
+        print("Element not found.")
+        return
 
     element_table = prettytable.PrettyTable()
     element_table.field_names = ["Colour", "Associated Roles"]
@@ -34,19 +55,16 @@ def get_element(element_name):
     print(Style.RESET_ALL)
 
 
-def get_skill(role_name, skill_index):
-    role = fdata.roles[role_name]
-    if skill_index < len(role['skills']):
-        return role['skills'][skill_index]
-    return None
-
-
 def get_player_skill(role_name, skill_index):
-    role = fdata.roles[role_name]
-    skill = get_skill(role_name, skill_index - 1)
-    skill_table = prettytable.PrettyTable()
+    role = data.get_role_by_name(role_name)
+    if not role:
+        print("Role not found.")
+        return
 
-    if skill:
+    skills = data.get_all_skills(role['id'])
+    if 0 < skill_index <= len(skills):
+        skill = skills[skill_index - 1]
+        skill_table = prettytable.PrettyTable()
         print(Fore.RED + Style.BRIGHT + f"\n{role['name']} skill {skill_index}:" + Fore.RESET)
         skill_table.field_names = ["Name", "Description", "Damage", "Health Cost", "Stamina Cost", "Mana Cost"]
         skill_table.add_row([skill['name'], skill['description'], skill['damage'], skill['health_cost'], skill['stamina_cost'], skill['mana_cost']])
@@ -57,7 +75,7 @@ def get_player_skill(role_name, skill_index):
         print(Style.RESET_ALL)
     else:
         print("Invalid skill index.")
-        menu_role()
+        menu_skill()
 
 
 def menu_game():
@@ -66,13 +84,16 @@ def menu_game():
 
     username = input(Fore.BLUE + Style.BRIGHT + "> Enter username: " + Style.RESET_ALL)
     role = menu_role()
-    element_name = role['element']
+    if not role:
+        return None, None, None
+
+    element_name = data.get_element_name_by_id(role['element_id'])
     print(Fore.MAGENTA + Style.BRIGHT + f">> {username} selected {role['name']} role <<" + Style.RESET_ALL)
 
     reselect = input(Fore.BLUE + Style.BRIGHT + "\n> Want to reselect the choices? (yes/no) " + Style.RESET_ALL)
     if reselect.lower() == "yes":
         os.system("clear")
-        menu_game()
+        return menu_game()
     else:
         os.system("clear")
         print(Fore.GREEN + "\nGame started." + Fore.RESET)
@@ -82,57 +103,55 @@ def menu_game():
 
 
 def menu_role():
-    fdata.load_game_data()
+    roles = data.get_all_roles()
 
-    print(Fore.RED + Style.BRIGHT + "\nROLES AVAILABLES:" + Fore.RESET)
-    for role_name, role in fdata.roles.items():
-        print(f"{role_name}")
-    print(Style.RESET_ALL)
+    print(Fore.RED+Style.BRIGHT+"\nROLES AVAILABLES:"+Fore.RESET)
+    for role in roles:
+        print(role['name'])
 
-    role_name = input(Fore.BLUE + Style.BRIGHT + "> Enter role name: " + Style.RESET_ALL).capitalize()
-    if role_name in fdata.roles:
+    role_name = input(Fore.BLUE+Style.BRIGHT+"\n> Enter role name: "+Style.RESET_ALL).capitalize()
+    role = data.get_role_by_name(role_name)
+    if role:
         get_role(role_name)
-        return fdata.roles[role_name]
     else:
         print("Invalid role name.")
-        menu_role()
+    return
 
 
 def menu_element():
-    fdata.load_game_data()
+    elements = data.get_all_elements()
 
-    print(Fore.RED + Style.BRIGHT + "\nELEMENTS AVAILABLES" + Fore.RESET)
-    elements_list = list(fdata.elements.items())
-    for i, (element_name, element) in enumerate(elements_list, start=1):
-        print(f"{i}. {element_name}")
-    print(Style.RESET_ALL)
+    print(Fore.RED+Style.BRIGHT+"\nELEMENTS AVAILABLES"+Fore.RESET)
+    for element in elements:
+        print(element['name'])
 
-    element_index = int(input(Fore.BLUE + Style.BRIGHT + "> Enter element index: " + Style.RESET_ALL))
-    if 1 <= element_index <= len(elements_list):
-        element_name = elements_list[element_index - 1][0]
+    element_name = input(Fore.BLUE+Style.BRIGHT+"\n> Enter element name: "+Style.RESET_ALL).capitalize()
+    element = data.get_element_by_name(element_name)
+    if element:
         get_element(element_name)
     else:
-        print("Invalid element index.")
-        menu_element()
+        print("Invalid element name.")
+    return
 
 
 def menu_skill():
-    fdata.load_game_data()
+    roles = data.get_all_roles()
 
-    print(Fore.RED + Style.BRIGHT + "\nSKILLS AVAILABLES" + Fore.RESET)
-    for role_name, role in fdata.roles.items():
-        print(Fore.MAGENTA + f"\n{role_name}" + Fore.RESET)
-        for i, skill in enumerate(role['skills'], start=1):
+    print(Fore.RED+Style.BRIGHT+"\nSKILLS AVAILABLES"+Fore.RESET)
+    for role in roles:
+        print(Fore.MAGENTA+f"\n{role['name']}"+Fore.RESET)
+        skills = data.get_all_skills(role['id'])
+        for i, skill in enumerate(skills, start=1):
             print(f"{i}. {skill['name']}")
-    print(Style.RESET_ALL)
 
-    role_name = input(Fore.BLUE + Style.BRIGHT + "> Enter role name: " + Style.RESET_ALL).capitalize()
-    if role_name in fdata.roles:
-        skill_index = int(input(Fore.BLUE + Style.BRIGHT + "> Enter skill index: " + Style.RESET_ALL))
+    role_name = input(Fore.BLUE+Style.BRIGHT+"\n> Enter role name: "+Style.RESET_ALL).capitalize()
+    role = data.get_role_by_name(role_name)
+    if role:
+        skill_index = int(input(Fore.BLUE+Style.BRIGHT+"\n> Enter skill index: "+Style.RESET_ALL))
         get_player_skill(role_name, skill_index)
     else:
         print("Invalid role name.")
-        menu_skill()
+    return
 
 
 def menu_help():
@@ -162,7 +181,7 @@ def print_board(board):
 
 
 def main_menu():
-    print(Fore.RED + Style.BRIGHT + "\nMAIN MENU" + Fore.RESET)
+    print(Fore.RED+Style.BRIGHT+"\nMAIN MENU"+Fore.RESET)
     menu_table = prettytable.PrettyTable()
     menu_table.add_column("Options", ["1", "2", "3", "4", "5", "6"])
     menu_table.add_column("Actions", ["Start game", "Role Info", "Element Info", "Skill Info", "Help", "Exit"])
@@ -172,7 +191,7 @@ def main_menu():
     print(menu_table)
     print(Style.RESET_ALL)
 
-    option = int(input(Fore.BLUE + Style.BRIGHT + "> Enter option: " + Style.RESET_ALL))
+    option = int(input(Fore.BLUE+Style.BRIGHT+"> Enter option: "+Style.RESET_ALL))
 
     match option:
         case 1:
@@ -180,12 +199,16 @@ def main_menu():
             return menu_game()
         case 2:
             menu_role()
+            return main_menu()
         case 3:
             menu_element()
+            return main_menu()
         case 4:
             menu_skill()
+            return main_menu()
         case 5:
             menu_help()
+            return main_menu()
         case 6:
             exit()
         case _:

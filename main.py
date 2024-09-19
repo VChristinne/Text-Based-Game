@@ -1,8 +1,7 @@
 import datetime
 import time
 from tzlocal import get_localzone
-import game_board
-import game_setup
+from game import gboard, gsetup
 
 
 def get_local_tz():
@@ -12,18 +11,20 @@ def get_local_tz():
 
 
 def main():
-    username, role_name, element_name = game_setup.main_menu()
+    while True:
+        username, role_name, element_name = gsetup.main_menu()
 
-    players = [game_board.player(username, role_name, element_name)]
-    turn = game_board.turn(1, get_local_tz(), None)
-    turns = [turn]
-    match_obj = game_board.match([players], 1)
+        if username and role_name and element_name:
+            players = [gboard.player(username, role_name, element_name)]
+            turn = gboard.turn(1, get_local_tz(), None)
+            turns = [turn]
+            match_obj = gboard.match([players], 1)
 
-    time.sleep(20)
+            time.sleep(20)
 
-    turn['end_at'] = get_local_tz()
-    board = game_board.create_board(match_obj, players, turns)
-    game_setup.print_board(board)
+            turn['end_at'] = get_local_tz()
+            board = gboard.create_board(match_obj, players, turns)
+            gsetup.print_board(board)
 
 
 if __name__ == '__main__':
