@@ -1,23 +1,18 @@
 def match(players, current_turn):
-    return {
+    match_obj = {
         "players": players,
         "current_turn": current_turn
     }
+    return match_obj
 
-def player(username, role, element):
-    return {
-        "username": username,
-        "role": role,
-        "element": element,
-    }
- 
 def turn(round_obj, begin_at, end_at=None, total_time=None):
-    return {
+    turn_obj = {
         "round": round_obj,
         "begin_at": begin_at,
         "end_at": end_at,
         "total_time": total_time
     }
+    return turn_obj
 
 def create_board(match_obj, players, turns):
     board = {
